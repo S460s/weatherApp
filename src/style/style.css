@@ -14,3 +14,6 @@
 #submitBtn {
 	background-color: beige;
 }
+#card {
+	border: 2px solid red;
+}

@@ -6,7 +6,7 @@ const searchBar = document.getElementById('searchBar');
 
 async function getWeather(location) {
 	const response = await fetch(
-		`http://api.openweathermap.org/data/2.5/weather?q=${location},&APPID=${API_KEY}`,
+		`http://api.openweathermap.org/data/2.5/weather?q=${location},&APPID=${API_KEY}&units=metric`,
 		{ mode: 'cors' }
 	);
 	if (!response.ok) {
