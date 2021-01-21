@@ -1,0 +1,16 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#title {
+	color: blueviolet;
+}
+
+#searchBar {
+	width: 200px;
+}
+
+#submitBtn {
+	background-color: beige;
+}
