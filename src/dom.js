@@ -9,31 +9,43 @@ const clearDiv = function (div) {
 const localTimeEvent = function () {
 	const localTimeP = document.getElementById('localTime');
 	let date = new Date();
-	let s = date.getTimezoneOffset();
-	let hours = date.getHours() + s / 60 + hrs / 3600;
+	let minutes = ('0' + date.getMinutes()).substr(-2);
+	let seconds = ('0' + date.getSeconds()).substr(-2);
+	let offset = date.getTimezoneOffset();
+	let hours = date.getHours() + offset / 60 + hrs / 3600;
+	if (Math.floor(hours) !== hours) {
+		minutes = Number(minutes) + (hours - Math.floor(hours)) * 60;
+		hours = Math.floor(hours);
+		if (minutes > 60) {
+			hours += 1;
+			minutes -= 60;
+		}
+	}
 	if (hours < 0) {
 		hours = 24 + hours;
 	}
-	let minutes = '0' + date.getMinutes();
-	let seconds = '0' + date.getSeconds();
-	let formattedTime =
-		hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+	let formattedTime = hours + ':' + minutes + ':' + seconds;
 	localTimeP.textContent = 'Local time: ' + formattedTime;
 };
 
-const formateTime = function (time, offset) {
+const formateTime = function (time) {
 	let date = new Date(time * 1000);
-	let s = date.getTimezoneOffset();
-	let hours = date.getHours() + s / 60 + offset / 3600;
-	console.log(hours);
+	let minutes = ('0' + date.getMinutes()).substr(-2);
+	let seconds = ('0' + date.getSeconds()).substr(-2);
+	let offset = date.getTimezoneOffset();
+	let hours = date.getHours() + offset / 60 + hrs / 3600;
+	if (Math.floor(hours) !== hours) {
+		minutes = Number(minutes) + (hours - Math.floor(hours)) * 60;
+		hours = Math.floor(hours);
+		if (minutes > 60) {
+			hours += 1;
+			minutes -= 60;
+		}
+	}
 	if (hours < 0) {
 		hours = 24 + hours;
 	}
-	let minutes = '0' + date.getMinutes();
-	let seconds = '0' + date.getSeconds();
-	console.log(hours + ' 123');
-	let formattedTime =
-		hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+	let formattedTime = hours + ':' + minutes + ':' + seconds;
 	return formattedTime;
 };
 
@@ -52,10 +64,9 @@ const createCard = function (data) {
 	visibilityP.textContent = data.visibility / 1000 + 'km';
 
 	flag.src = `https://www.countryflags.io/${data.sys.country}/flat/64.png`;
-	sunrP.textContent =
-		'Sunrise   ' + formateTime(data.sys.sunrise, data.timezone);
-	sunsP.textContent = 'Sunset   ' + formateTime(data.sys.sunset, data.timezone);
 	hrs = data.timezone;
+	sunrP.textContent = 'Sunrise   ' + formateTime(data.sys.sunrise);
+	sunsP.textContent = 'Sunset   ' + formateTime(data.sys.sunset);
 	localTimeEvent();
 	setInterval(localTimeEvent, 1000);
 };
