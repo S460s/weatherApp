@@ -22,7 +22,7 @@ async function showGiphy(topic) {
 
 async function getWeather(location) {
 	const response = await fetch(
-		`http://api.openweathermap.org/data/2.5/weather?q=${location},&APPID=${API_KEY}&units=metric`,
+		`https://api.openweathermap.org/data/2.5/weather?q=${location},&APPID=${API_KEY}&units=metric`,
 		{ mode: 'cors' }
 	);
 	if (!response.ok) {
