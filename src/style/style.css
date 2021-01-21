@@ -2,9 +2,25 @@
 	margin: 0;
 	padding: 0;
 }
+:root {
+	--bgColor: #a3c3e6;
+	--colorM: #142850;
+}
+
+body {
+	background-color: var(--bgColor);
+}
+#card {
+	border: 2px solid var(--colorM);
+}
+#card > p {
+	color: var(--colorM);
+	font-weight: ;
+}
 
 #title {
-	color: blueviolet;
+	color: var(--colorM);
+	text-align: center;
 }
 
 #searchBar {
@@ -13,7 +29,4 @@
 
 #submitBtn {
 	background-color: beige;
-}
-#card {
-	border: 2px solid red;
 }

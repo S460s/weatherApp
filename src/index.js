@@ -26,5 +26,6 @@ function searchEvent() {
 		form.reset();
 	});
 }
+getWeather('Pernik');
 
 searchEvent();

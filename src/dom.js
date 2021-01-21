@@ -10,6 +10,7 @@ const sunrP = document.getElementById('sunr');
 const sunsP = document.getElementById('suns');
 const tempSwitch = document.getElementById('temperature');
 const tempLabel = document.getElementById('tempLabel');
+const root = document.documentElement;
 
 const formateTime = function (time) {
 	let date;
@@ -32,6 +33,8 @@ const formateTime = function (time) {
 	}
 	if (hours < 0) {
 		hours = 24 + hours;
+	} else if (hours > 24) {
+		hours = -24 + hours;
 	}
 	let formattedTime = hours + ':' + minutes + ':' + seconds;
 	return formattedTime;
@@ -55,6 +58,19 @@ const switchCF = function (data) {
 	});
 };
 
+const checkDates = function (a, b) {
+	a = a.replaceAll(':', '');
+	b = b.replaceAll(':', '');
+	if (Number(a) < Number(b)) {
+		console.log(a, b);
+		root.style.setProperty('--bgColor', '#142850');
+		root.style.setProperty('--colorM', ' #a3c3e6');
+	} else if (Number(a) > Number(b)) {
+		root.style.setProperty('--bgColor', '#a3c3e6');
+		root.style.setProperty('--colorM', ' #142850');
+	}
+};
+
 const createCard = function (data) {
 	cityP.textContent = data.name;
 	tempP.textContent = `Temperature ${Math.floor(data.main.temp)}°C`;
@@ -66,6 +82,7 @@ const createCard = function (data) {
 	sunrP.textContent = 'Sunrise' + formateTime(data.sys.sunrise);
 	sunsP.textContent = 'Sunset' + formateTime(data.sys.sunset);
 	localTimeP.textContent = 'Local time: ' + formateTime();
+	checkDates(formateTime(data.sys.sunset), formateTime());
 
 	setInterval(() => {
 		localTimeP.textContent = 'Local time: ' + formateTime();
