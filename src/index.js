@@ -1,5 +1,5 @@
 import './style/style.css';
-import { createCard } from './dom.js';
+import { createCard, switchCF } from './dom.js';
 const API_KEY = '0a4f4a6eecd2d2972049aaf3d53317b8';
 const form = document.querySelector('form');
 const searchBar = document.getElementById('searchBar');
@@ -14,6 +14,7 @@ async function getWeather(location) {
 	} else {
 		const data = await response.json();
 		createCard(data);
+		switchCF(data);
 		console.log(data);
 	}
 }
