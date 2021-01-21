@@ -58,14 +58,15 @@ const switchCF = function (data) {
 	});
 };
 
-const checkDates = function (a, b) {
+const checkDates = function (a, b, c) {
 	a = a.replaceAll(':', '');
 	b = b.replaceAll(':', '');
-	if (Number(a) < Number(b)) {
+	c = c.replaceAll(':', '');
+	if (Number(a) < Number(b) || Number(b) < Number(c)) {
 		console.log(a, b);
 		root.style.setProperty('--bgColor', '#142850');
 		root.style.setProperty('--colorM', ' #a3c3e6');
-	} else if (Number(a) > Number(b)) {
+	} else {
 		root.style.setProperty('--bgColor', '#a3c3e6');
 		root.style.setProperty('--colorM', ' #142850');
 	}
@@ -82,7 +83,11 @@ const createCard = function (data) {
 	sunrP.textContent = 'Sunrise' + formateTime(data.sys.sunrise);
 	sunsP.textContent = 'Sunset' + formateTime(data.sys.sunset);
 	localTimeP.textContent = 'Local time: ' + formateTime();
-	checkDates(formateTime(data.sys.sunset), formateTime());
+	checkDates(
+		formateTime(data.sys.sunset),
+		formateTime(),
+		formateTime(data.sys.sunrise)
+	);
 
 	setInterval(() => {
 		localTimeP.textContent = 'Local time: ' + formateTime();
