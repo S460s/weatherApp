@@ -4,33 +4,51 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Weather App</title>
+
 	</head>
 	<body>
 		<header>
 			<h1 id="title">Weather App</h1>
-			<form action="">
-				<input id="searchBar" type="text" required />
+			<form id="weatherForm" action="">
+				<input id="searchBar" type="text" required placeholder="Search city" />
 				<button id="submitBtn">Search</button>
-			</form>
-			<label for="temperature"
-				><span id="tempLabel">C</span>
-				<input type="checkbox" name="" id="temperature" />
-			</label>
-		</header>
-
+				<label for="temperature" class="switch">
+					<input type="checkbox" name="" id="temperature" />
+					<span class="slider round"></span>
+				</label>
+			</header>
+		</form>
+		<p id="errP">No matching location found!</p>
 		<main id="infoSection">
 			<div id="card">
-				<img src="" alt="" id="flag" />
-				<p id="city"></p>
-				<p id="temp"></p>
-				<p id="humidity"></p>
-				<p id="visibility"></p>
-				<p id="sunr"></p>
-				<p id="suns"></p>
-				<p id="localTime"></p>
-				<img src="" id="giphy" alt="" />
+				<div class="wrap1">
+					<img src="" alt="flag of the searched country" id="flag" />
+					<p id="city"></p>
+					<img src="" alt="an icon describing the weather" id="weatherIcon">
+				</div>
+				<div class="wrap">
+					<p id="humidity"></p>
+					<p id="visibility"></p>
+					<p id="pressure"></p>
+				</div>
+				<div class="wrap">
+					<p id="temp"></p>
+					<p id="maxTemp"></p>
+					<p id="minTemp"></p>
+				</div>
+				<div class="wrap">
+					<p id="sunr"></p>
+					<p id="localTime"></p>
+					<p id="suns"></p>
+				</div>
+				<!-- <img src="" id="giphy" alt="a giphy coresponding the weather" /> -->
 			</div>
 		</main>
+		<footer>
+			<a href="https://github.com/S460s/weatherApp">
+				<img src="" alt="A github icon" id="ghIcon">
+			</a>
+		</footer>
 		<script src="main.js"></script>
 	</body>
 </html>
