@@ -1,6 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 :root {
 	--bgColor: #a3c3e6;
@@ -22,10 +23,37 @@ body {
 	text-align: center;
 }
 
+/*Search Bar*/
+
 #searchBar {
-	width: 200px;
+	padding: 10px;
+	font-size: 17px;
+	border: 1px solid grey;
+	float: left;
+	width: 60%;
+	background: #f1f1f1;
 }
 
 #submitBtn {
-	background-color: beige;
+	float: left;
+	width: 20%;
+	padding: 10px;
+	background: #2196f3;
+	color: white;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	cursor: pointer;
+}
+
+#weatherForm::after {
+	content: '';
+	clear: both;
+	display: table;
+}
+
+/*Temperature Switch*/
+.switch {
+	position: relative;
+	display: inline-block;
 }
