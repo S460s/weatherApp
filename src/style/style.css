@@ -14,7 +14,7 @@
 
 body {
 	background-color: var(--medium);
-	transition: background-color 2s;
+	transition: background-color 1s;
 }
 
 #title {
@@ -28,6 +28,7 @@ header {
 	height: 20vh;
 	background-color: var(--bgColor);
 	margin-bottom: 100px;
+	transition: background-color 1s;
 }
 
 /*Search Bar*/
@@ -48,6 +49,8 @@ header {
 	max-width: 400px;
 	background-color: var(--light);
 	color: var(--textColor);
+	transition: background-color 1s;
+	transition: color 0.5s;
 }
 #searchBar::placeholder {
 	color: var(--textColor);
@@ -62,7 +65,9 @@ header {
 	border: 1px solid var(--medium);
 	border-left: none;
 	cursor: pointer;
-	color: var(--textColor);
+	color: var(--light);
+	transition: background-color 1s;
+	transition: color 0.5s;
 }
 /*Invalid search*/
 #errP {
@@ -145,6 +150,7 @@ header {
 }
 #card > p {
 	color: var(--colorM);
+	transition: color 0.5s;
 }
 
 #card {
@@ -160,6 +166,8 @@ header {
 	align-content: center;
 	justify-content: center;
 	border-radius: 20px;
+	transition: background-color 1s;
+	display: none;
 }
 .wrap {
 	display: grid;
@@ -190,6 +198,7 @@ header {
 #city {
 	font-size: 35px;
 	color: var(--textColor);
+	transition: color 0.5s;
 }
 #weatherIcon {
 	grid-column: 4 / 5;

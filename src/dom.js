@@ -1,6 +1,8 @@
 import './style/style.css';
 import GitHubIcon from './img/GitHubIcon.png';
+
 let hrs = 0;
+const card = document.getElementById('card');
 const localTimeP = document.getElementById('localTime');
 const cityP = document.getElementById('city');
 const tempP = document.getElementById('temp');
@@ -17,7 +19,7 @@ const weatherIcon = document.getElementById('weatherIcon');
 const maxTemp = document.getElementById('maxTemp');
 const minTemp = document.getElementById('minTemp');
 const pressure = document.getElementById('pressure');
-let a = 1;
+const submitBtn = document.getElementById('submitBtn');
 function setIcon() {
 	ghImg.src = GitHubIcon;
 }
@@ -60,9 +62,15 @@ const formateTime = function (time) {
 
 const handleSwitchCF = function (data) {
 	if (tempSwitch.checked) {
-		tempP.textContent = `Temperature: ${data.main.temp * 1.8 + 32}°F`;
-		minTemp.textContent = `Min Temperature: ${data.main.temp_min * 1.8 + 32}°F`;
-		maxTemp.textContent = `Max Temperature: ${data.main.temp_max * 1.8 + 32}°F`;
+		tempP.textContent = `Temperature: ${Math.floor(
+			data.main.temp * 1.8 + 32
+		)}°F`;
+		minTemp.textContent = `Min Temperature: ${Math.floor(
+			data.main.temp_min * 1.8 + 32
+		)}°F`;
+		maxTemp.textContent = `Max Temperature: ${Math.floor(
+			data.main.temp_max * 1.8 + 32
+		)}°F`;
 	} else {
 		tempP.textContent = `Temperature ${data.main.temp}°C`;
 		minTemp.textContent = `Min Temperature ${data.main.temp_min}°C`;
@@ -89,13 +97,15 @@ const checkDates = function (a, b, c) {
 		root.style.setProperty('--light', ' #222b7c');
 		root.style.setProperty('--medium', '#0d2029');
 		root.style.setProperty('--slide', '#1d3557');
+		submitBtn.style.color = '#51c2d5';
 	} else {
 		root.style.setProperty('--bgColor', '#f58634');
 		root.style.setProperty('--colorM', ' #142850');
 		root.style.setProperty('--textColor', ' #010514');
-		root.style.setProperty('--btnBg', ' #00af91');
+		root.style.setProperty('--btnBg', ' #2196f3');
 		root.style.setProperty('--light', ' white');
 		root.style.setProperty('--medium', 'rgb(228, 227, 227)');
+		submitBtn.style.color = '#white';
 	}
 };
 
@@ -104,6 +114,7 @@ const setWeatherIcon = function (code) {
 };
 
 const createCard = function (data) {
+	card.style.display = 'flex';
 	setWeatherIcon(data.weather[0].icon);
 	cityP.textContent = data.name;
 	tempP.textContent = `Temperature: ${data.main.temp}°C`;
