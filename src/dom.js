@@ -9,9 +9,7 @@ const flag = document.getElementById('flag');
 const sunrP = document.getElementById('sunr');
 const sunsP = document.getElementById('suns');
 const tempSwitch = document.getElementById('temperature');
-const tempLabel = document.getElementById('tempLabel');
 const root = document.documentElement;
-
 const formateTime = function (time) {
 	let date;
 	if (time) {
@@ -45,10 +43,8 @@ const handleSwitchCF = function (data) {
 		tempP.textContent = `Temperature ${Math.floor(
 			Math.floor(data.main.temp) * 1.8 + 32
 		)}°F`;
-		//tempLabel.textContent = '°F';
 	} else {
 		tempP.textContent = `Temperature ${Math.floor(data.main.temp)}°C`;
-		//	tempLabel.textContent = '°C';
 	}
 };
 const switchCF = function (data) {

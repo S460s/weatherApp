@@ -5,6 +5,15 @@ const GIPHY_API_KEY = 'CtWKWgDFEoAZdObMpNzJngDXDmiTvo4q';
 const form = document.querySelector('form');
 const searchBar = document.getElementById('searchBar');
 const giphy = document.getElementById('giphy');
+const errP = document.getElementById('errP');
+
+function validateForm(flag) {
+	if (flag) {
+		errP.style.display = 'none';
+	} else {
+		errP.style.display = 'block';
+	}
+}
 
 async function showGiphy(topic) {
 	const response = await fetch(
@@ -24,6 +33,7 @@ async function getWeather(location) {
 		`https://api.openweathermap.org/data/2.5/weather?q=${location},&APPID=${WEATHER_API_KEY}&units=metric`,
 		{ mode: 'cors' }
 	);
+	validateForm(response.ok);
 	if (!response.ok) {
 		console.log('Response was not ok.');
 	} else {
