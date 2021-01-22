@@ -45,10 +45,10 @@ const handleSwitchCF = function (data) {
 		tempP.textContent = `Temperature ${Math.floor(
 			Math.floor(data.main.temp) * 1.8 + 32
 		)}°F`;
-		tempLabel.textContent = '°F';
+		//tempLabel.textContent = '°F';
 	} else {
 		tempP.textContent = `Temperature ${Math.floor(data.main.temp)}°C`;
-		tempLabel.textContent = '°C';
+		//	tempLabel.textContent = '°C';
 	}
 };
 const switchCF = function (data) {
