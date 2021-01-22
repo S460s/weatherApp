@@ -13,6 +13,11 @@ const tempSwitch = document.getElementById('temperature');
 const root = document.documentElement;
 const errP = document.getElementById('errP');
 const ghImg = document.getElementById('ghIcon');
+const weatherIcon = document.getElementById('weatherIcon');
+const maxTemp = document.getElementById('maxTemp');
+const minTemp = document.getElementById('minTemp');
+const pressure = document.getElementById('pressure');
+let a = 1;
 function setIcon() {
 	ghImg.src = GitHubIcon;
 }
@@ -55,11 +60,13 @@ const formateTime = function (time) {
 
 const handleSwitchCF = function (data) {
 	if (tempSwitch.checked) {
-		tempP.textContent = `Temperature ${Math.floor(
-			Math.floor(data.main.temp) * 1.8 + 32
-		)}°F`;
+		tempP.textContent = `Temperature: ${data.main.temp * 1.8 + 32}°F`;
+		minTemp.textContent = `Min Temperature: ${data.main.temp_min * 1.8 + 32}°F`;
+		maxTemp.textContent = `Max Temperature: ${data.main.temp_max * 1.8 + 32}°F`;
 	} else {
-		tempP.textContent = `Temperature ${Math.floor(data.main.temp)}°C`;
+		tempP.textContent = `Temperature ${data.main.temp}°C`;
+		minTemp.textContent = `Min Temperature ${data.main.temp_min}°C`;
+		maxTemp.textContent = `Max Temperature ${data.main.temp_max}°C`;
 	}
 };
 const switchCF = function (data) {
@@ -75,34 +82,47 @@ const checkDates = function (a, b, c) {
 	c = c.replaceAll(':', '');
 	if (Number(a) < Number(b) || Number(b) < Number(c)) {
 		console.log(a, b);
-		root.style.setProperty('--bgColor', '#142850');
-		root.style.setProperty('--colorM', ' #a3c3e6');
+		root.style.setProperty('--bgColor', '#081b45');
+		root.style.setProperty('--colorM', ' #51c2d5');
+		root.style.setProperty('--textColor', '#51c2d5');
+		root.style.setProperty('--btnBg', ' #0b525b');
+		root.style.setProperty('--light', ' #222b7c');
+		root.style.setProperty('--medium', '#0d2029');
+		root.style.setProperty('--slide', '#1d3557');
 	} else {
-		root.style.setProperty('--bgColor', '#a3c3e6');
+		root.style.setProperty('--bgColor', '#f58634');
 		root.style.setProperty('--colorM', ' #142850');
+		root.style.setProperty('--textColor', ' #010514');
+		root.style.setProperty('--btnBg', ' #00af91');
+		root.style.setProperty('--light', ' white');
+		root.style.setProperty('--medium', 'rgb(228, 227, 227)');
 	}
 };
 
+const setWeatherIcon = function (code) {
+	weatherIcon.src = `http://openweathermap.org/img/wn/${code}@2x.png`;
+};
+
 const createCard = function (data) {
+	setWeatherIcon(data.weather[0].icon);
 	cityP.textContent = data.name;
-	tempP.textContent = `Temperature ${Math.floor(data.main.temp)}°C`;
-	humidityP.textContent = `Humidity %${data.main.humidity}`;
-	visibilityP.textContent = `Visibility ${data.visibility / 1000}km`;
+	tempP.textContent = `Temperature: ${data.main.temp}°C`;
+	maxTemp.textContent = `Max Temperature: ${data.main.temp_max}°C`;
+	minTemp.textContent = `Min Temperature: ${data.main.temp_min}°C`;
+
+	humidityP.textContent = `Humidity: %${data.main.humidity}`;
+	visibilityP.textContent = `Visibility: ${data.visibility / 1000}km`;
+	pressure.textContent = `Pressure: ${data.main.pressure}`;
 
 	flag.src = `https://www.countryflags.io/${data.sys.country}/flat/64.png`;
 	hrs = data.timezone;
-	sunrP.textContent = 'Sunrise' + formateTime(data.sys.sunrise);
-	sunsP.textContent = 'Sunset' + formateTime(data.sys.sunset);
+	sunrP.textContent = 'Sunrise: ' + formateTime(data.sys.sunrise);
+	sunsP.textContent = 'Sunset: ' + formateTime(data.sys.sunset);
 	localTimeP.textContent = 'Local time: ' + formateTime();
-	checkDates(
-		formateTime(data.sys.sunset),
-		formateTime(),
-		formateTime(data.sys.sunrise)
-	);
 
 	setInterval(() => {
 		localTimeP.textContent = 'Local time: ' + formateTime();
 	}, 1000);
 };
 
-export { createCard, switchCF, validateForm, setIcon };
+export { formateTime, checkDates, createCard, switchCF, validateForm, setIcon };

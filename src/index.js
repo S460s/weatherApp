@@ -1,11 +1,17 @@
 import './style/style.css';
-import { createCard, setIcon, switchCF, validateForm } from './dom.js';
+import {
+	formateTime,
+	checkDates,
+	createCard,
+	setIcon,
+	switchCF,
+	validateForm,
+} from './dom.js';
 const WEATHER_API_KEY = '0a4f4a6eecd2d2972049aaf3d53317b8';
 const GIPHY_API_KEY = 'CtWKWgDFEoAZdObMpNzJngDXDmiTvo4q';
 const form = document.querySelector('form');
 const searchBar = document.getElementById('searchBar');
 const giphy = document.getElementById('giphy');
-
 async function showGiphy(topic) {
 	const response = await fetch(
 		`https://api.giphy.com/v1/gifs/translate?api_key=${GIPHY_API_KEY}&s=${topic}`,
@@ -29,9 +35,16 @@ async function getWeather(location) {
 		console.log('Response was not ok.');
 	} else {
 		const data = await response.json();
+		console.log(data);
 		createCard(data);
+		checkDates(
+			formateTime(data.sys.sunset),
+			formateTime(),
+			formateTime(data.sys.sunrise)
+		);
+
 		switchCF(data);
-		showGiphy(data.weather[0].main);
+		//showGiphy(data.weather[0].main);
 	}
 }
 
@@ -39,7 +52,7 @@ function searchEvent() {
 	form.addEventListener('submit', (e) => {
 		e.preventDefault();
 		getWeather(searchBar.value);
-		form.reset();
+		searchBar.value = '';
 	});
 }
 getWeather('Pernik');
