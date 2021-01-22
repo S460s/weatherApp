@@ -1,19 +1,10 @@
 import './style/style.css';
-import { createCard, switchCF } from './dom.js';
+import { createCard, setIcon, switchCF, validateForm } from './dom.js';
 const WEATHER_API_KEY = '0a4f4a6eecd2d2972049aaf3d53317b8';
 const GIPHY_API_KEY = 'CtWKWgDFEoAZdObMpNzJngDXDmiTvo4q';
 const form = document.querySelector('form');
 const searchBar = document.getElementById('searchBar');
 const giphy = document.getElementById('giphy');
-const errP = document.getElementById('errP');
-
-function validateForm(flag) {
-	if (flag) {
-		errP.style.display = 'none';
-	} else {
-		errP.style.display = 'block';
-	}
-}
 
 async function showGiphy(topic) {
 	const response = await fetch(
@@ -53,3 +44,4 @@ function searchEvent() {
 }
 getWeather('Pernik');
 searchEvent();
+setIcon();

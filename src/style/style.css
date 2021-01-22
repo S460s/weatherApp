@@ -28,9 +28,12 @@ body {
 	display: flex;
 	justify-content: center;
 	width: 100%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 15px;
 }
-
 #searchBar {
+	height: 40px;
 	padding: 10px;
 	font-size: 17px;
 	border: 1px solid grey;
@@ -40,6 +43,7 @@ body {
 }
 
 #submitBtn {
+	height: 40px;
 	max-width: 150px;
 	padding: 10px;
 	background: #2196f3;
@@ -112,3 +116,14 @@ body {
 	-ms-transform: translateX(26px);
 	transform: translateX(26px);
 }
+
+/*ghIcon*/
+#ghIcon {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+}
+
+/*Card*/

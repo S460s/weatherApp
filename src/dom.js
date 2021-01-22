@@ -1,4 +1,5 @@
 import './style/style.css';
+import GitHubIcon from './img/GitHubIcon.png';
 let hrs = 0;
 const localTimeP = document.getElementById('localTime');
 const cityP = document.getElementById('city');
@@ -10,6 +11,20 @@ const sunrP = document.getElementById('sunr');
 const sunsP = document.getElementById('suns');
 const tempSwitch = document.getElementById('temperature');
 const root = document.documentElement;
+const errP = document.getElementById('errP');
+const ghImg = document.getElementById('ghIcon');
+function setIcon() {
+	ghImg.src = GitHubIcon;
+}
+
+function validateForm(flag) {
+	if (flag) {
+		errP.style.display = 'none';
+	} else {
+		errP.style.display = 'block';
+	}
+}
+
 const formateTime = function (time) {
 	let date;
 	if (time) {
@@ -90,4 +105,4 @@ const createCard = function (data) {
 	}, 1000);
 };
 
-export { createCard, switchCF };
+export { createCard, switchCF, validateForm, setIcon };
