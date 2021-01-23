@@ -1,6 +1,5 @@
 import './style/style.css';
 import GitHubIcon from './img/GitHubIcon.png';
-import locationIcon from './img/map-pin.svg';
 
 let hrs = 0;
 const card = document.getElementById('card');
@@ -22,10 +21,8 @@ const minTemp = document.getElementById('minTemp');
 
 const pressure = document.getElementById('pressure');
 const myMAP = document.getElementById('myMAP');
-const locationImg = document.getElementById('locationIcon');
 function setIcon() {
 	ghImg.src = GitHubIcon;
-	locationImg.src = locationIcon;
 }
 
 function validateForm(flag) {

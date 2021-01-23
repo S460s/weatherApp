@@ -9,8 +9,7 @@ import {
 	validateForm,
 } from './dom.js';
 
-const locationBtn = document.getElementById('getLocation');
-
+const locationBtn = document.querySelector('svg');
 const WEATHER_API_KEY = '0a4f4a6eecd2d2972049aaf3d53317b8';
 const form = document.querySelector('form');
 const searchBar = document.getElementById('searchBar');
