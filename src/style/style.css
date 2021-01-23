@@ -52,6 +52,7 @@ header {
 	color: var(--textColor);
 	transition: background-color 1s;
 	transition: color 0.5s;
+	outline: none;
 }
 #searchBar::placeholder {
 	color: var(--textColor);
@@ -159,7 +160,7 @@ header {
 #card {
 	width: 80%;
 	height: fit-content;
-	max-width: 800px;
+	max-width: 700px;
 	min-width: 400px;
 	background-color: var(--light);
 	margin: auto;
@@ -168,8 +169,8 @@ header {
 	flex-wrap: nowrap;
 	align-content: center;
 	justify-content: center;
-	border-radius: 20px;
 	transition: background-color 1s;
+	padding: 10px;
 }
 .wrap {
 	display: grid;
@@ -206,4 +207,10 @@ header {
 #myMAP {
 	width: 100%;
 	height: 200px;
+}
+
+#locationIcon {
+	width: 40px;
+	height: 40px;
+	background-color: var(--btnBg);
 }
