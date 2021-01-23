@@ -19,7 +19,6 @@ const weatherIcon = document.getElementById('weatherIcon');
 const maxTemp = document.getElementById('maxTemp');
 const minTemp = document.getElementById('minTemp');
 const pressure = document.getElementById('pressure');
-const submitBtn = document.getElementById('submitBtn');
 function setIcon() {
 	ghImg.src = GitHubIcon;
 }
@@ -97,15 +96,15 @@ const checkDates = function (a, b, c) {
 		root.style.setProperty('--light', ' #222b7c');
 		root.style.setProperty('--medium', '#0d2029');
 		root.style.setProperty('--slide', '#1d3557');
-		submitBtn.style.color = '#51c2d5';
+		root.style.setProperty('--btnTxt', '#51c2d5');
 	} else {
 		root.style.setProperty('--bgColor', '#f58634');
 		root.style.setProperty('--colorM', ' #142850');
-		root.style.setProperty('--textColor', ' #010514');
+		root.style.setProperty('--textColor', '#010514');
 		root.style.setProperty('--btnBg', ' #2196f3');
 		root.style.setProperty('--light', ' white');
 		root.style.setProperty('--medium', 'rgb(228, 227, 227)');
-		submitBtn.style.color = '#white';
+		root.style.setProperty('--btnTxt', 'white');
 	}
 };
 

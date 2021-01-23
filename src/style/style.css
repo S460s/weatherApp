@@ -10,6 +10,7 @@
 	--btnBg: #00af91;
 	--light: white;
 	--medium: rgb(228, 227, 227);
+	--btnTxt: white;
 }
 
 body {
@@ -27,7 +28,7 @@ body {
 header {
 	height: 20vh;
 	background-color: var(--bgColor);
-	margin-bottom: 100px;
+	margin-bottom: 40px;
 	transition: background-color 1s;
 }
 
@@ -65,7 +66,7 @@ header {
 	border: 1px solid var(--medium);
 	border-left: none;
 	cursor: pointer;
-	color: var(--light);
+	color: var(--btnTxt);
 	transition: background-color 1s;
 	transition: color 0.5s;
 }
@@ -74,6 +75,8 @@ header {
 	color: red;
 	text-align: center;
 	text-decoration: underline;
+	display: none;
+	margin-bottom: 30px;
 }
 
 /*Temperature Switch*/
@@ -167,7 +170,6 @@ header {
 	justify-content: center;
 	border-radius: 20px;
 	transition: background-color 1s;
-	display: none;
 }
 .wrap {
 	display: grid;
@@ -181,11 +183,6 @@ header {
 	font-weight: 500;
 	padding: 1vw;
 	color: var(--textColor);
-}
-.wrap > p:hover {
-	font-size: 140%;
-	font-weight: 600;
-	transition: font-size 1s;
 }
 
 .wrap1 {
