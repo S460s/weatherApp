@@ -1,5 +1,4 @@
 import L from 'mapbox.js';
-import './style/style.css';
 import {
 	formateTime,
 	checkDates,

@@ -1,4 +1,3 @@
-import './style/style.css';
 import GitHubIcon from './img/GitHubIcon.png';
 
 let hrs = 0;
