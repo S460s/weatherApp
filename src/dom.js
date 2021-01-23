@@ -18,7 +18,9 @@ const ghImg = document.getElementById('ghIcon');
 const weatherIcon = document.getElementById('weatherIcon');
 const maxTemp = document.getElementById('maxTemp');
 const minTemp = document.getElementById('minTemp');
+
 const pressure = document.getElementById('pressure');
+const myMAP = document.getElementById('myMAP');
 function setIcon() {
 	ghImg.src = GitHubIcon;
 }
@@ -97,6 +99,7 @@ const checkDates = function (a, b, c) {
 		root.style.setProperty('--medium', '#0d2029');
 		root.style.setProperty('--slide', '#1d3557');
 		root.style.setProperty('--btnTxt', '#51c2d5');
+		myMAP.classList.add('dark');
 	} else {
 		root.style.setProperty('--bgColor', '#f58634');
 		root.style.setProperty('--colorM', ' #142850');
@@ -105,6 +108,7 @@ const checkDates = function (a, b, c) {
 		root.style.setProperty('--light', ' white');
 		root.style.setProperty('--medium', 'rgb(228, 227, 227)');
 		root.style.setProperty('--btnTxt', 'white');
+		myMAP.classList.remove('dark');
 	}
 };
 

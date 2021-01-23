@@ -200,3 +200,10 @@ header {
 #weatherIcon {
 	grid-column: 4 / 5;
 }
+
+/*Map*/
+
+#myMAP {
+	width: 100%;
+	height: 200px;
+}

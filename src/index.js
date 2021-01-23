@@ -1,3 +1,4 @@
+import 'mapbox.js';
 import './style/style.css';
 import {
 	formateTime,
@@ -8,22 +9,18 @@ import {
 	validateForm,
 } from './dom.js';
 const WEATHER_API_KEY = '0a4f4a6eecd2d2972049aaf3d53317b8';
-const GIPHY_API_KEY = 'CtWKWgDFEoAZdObMpNzJngDXDmiTvo4q';
 const form = document.querySelector('form');
 const searchBar = document.getElementById('searchBar');
-const giphy = document.getElementById('giphy');
-async function showGiphy(topic) {
-	const response = await fetch(
-		`https://api.giphy.com/v1/gifs/translate?api_key=${GIPHY_API_KEY}&s=${topic}`,
-		{ mode: 'cors' }
-	);
-	try {
-		const giphyData = await response.json();
-		giphy.src = giphyData.data.images.original.url;
-	} catch (err) {
-		console.log(err.message);
-	}
-}
+
+L.mapbox.accessToken =
+	'pk.eyJ1IjoiczQ2MCIsImEiOiJja2s4NWJ1bXIwaGUzMnZsbjhvNW93Y2Q3In0.fcqdAv0ALzTyx2d0o04J8A';
+var map = L.mapbox
+	.map('myMAP')
+	.addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+
+const setMap = function (lat, log) {
+	map.setView([lat, log], 9);
+};
 
 async function getWeather(location) {
 	const response = await fetch(
@@ -42,7 +39,7 @@ async function getWeather(location) {
 			formateTime(),
 			formateTime(data.sys.sunrise)
 		);
-
+		setMap(data.coord.lat, data.coord.lon);
 		switchCF(data);
 		//showGiphy(data.weather[0].main);
 	}
