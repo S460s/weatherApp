@@ -79,7 +79,7 @@ function getLocation() {
 	navigator.geolocation.getCurrentPosition(geoSuccess);
 }
 
-getWeather('Pernik');
+getWeather('Alicante');
 searchEvent();
 setIcon();
 getLocationEvent();

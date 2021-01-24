@@ -89,10 +89,9 @@ const checkDates = function (a, b, c) {
 	b = b.replaceAll(':', '');
 	c = c.replaceAll(':', '');
 	if (Number(a) < Number(b) || Number(b) < Number(c)) {
-		console.log(a, b);
 		root.style.setProperty('--bgColor', '#081b45');
 		root.style.setProperty('--colorM', ' #51c2d5');
-		root.style.setProperty('--textColor', '#51c2d5');
+		root.style.setProperty('--textColor', '#5cd7ec');
 		root.style.setProperty('--btnBg', ' #0b525b');
 		root.style.setProperty('--light', ' #222b7c');
 		root.style.setProperty('--medium', '#0d2029');
@@ -112,7 +111,7 @@ const checkDates = function (a, b, c) {
 };
 
 const setWeatherIcon = function (code) {
-	weatherIcon.src = `http://openweathermap.org/img/wn/${code}@2x.png`;
+	weatherIcon.src = `https://openweathermap.org/img/wn/${code}@2x.png`;
 };
 
 const createCard = function (data) {

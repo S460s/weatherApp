@@ -11,9 +11,10 @@
 		<header>
 			<h1 id="title">Weather App</h1>
 			<form id="weatherForm" action="">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin location"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>				<input id="searchBar" type="text" required placeholder="Search city" />
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin location"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+					<input id="searchBar" type="text" required placeholder="Search city" />
 				<button id="submitBtn">Search</button>
-				<label for="temperature" class="switch">
+				<label for="temperature" class="switch" name='temperature'>
 					<input type="checkbox" name="" id="temperature" />
 					<span class="slider round"></span>
 				</label>
@@ -46,7 +47,7 @@
 			</div>
 		</main>
 		<footer>
-			<a href="https://github.com/S460s/weatherApp">
+			<a rel="noopener" href="https://github.com/S460s/weatherApp">
 				<img src="" alt="A github icon" id="ghIcon">
 			</a>
 		</footer>
